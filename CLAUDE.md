@@ -19,10 +19,17 @@ custom domain / CNAME record is required).
   step, which does `rm -rf content && git clone --depth 1
   https://github.com/handsdiff/notes.git content && rm -rf content/.git`.
   Never edit files in `content/` directly; edit the vault instead.
-- Deploy workflow triggers: push to `v5`, `*/10 * * * *` cron, and
-  `workflow_dispatch`. End-to-end latency from a vault edit to the live
-  site is roughly 10-20 min (obsidian-git's ~10min auto-push + this
-  repo's ~10min cron + ~1-2min build).
+- Deploy workflow triggers: push to `v5`, `*/10 * * * *` cron,
+  `workflow_dispatch`, and `repository_dispatch` (type `notes-updated`).
+- The `*/10` cron is unreliable — GitHub throttles scheduled events
+  heavily (observed 1-2h+ gaps), so it's only a fallback. The primary
+  path is event-driven: `handsdiff/notes` runs
+  `.github/workflows/trigger-deploy.yml` on push, which POSTs a
+  `notes-updated` repository_dispatch here using the
+  `GARDEN_DISPATCH_TOKEN` secret (a fine-grained PAT with Contents:write
+  on this repo). With that secret set, a vault edit is live in ~1-2 min
+  (obsidian-git auto-push + dispatch + ~1min build); without it the
+  trigger workflow skips and you fall back to the cron.
 
 ## Identity / remotes
 
