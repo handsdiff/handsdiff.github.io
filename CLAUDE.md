@@ -1,8 +1,14 @@
-# handsdiff/garden
+# handsdiff/handsdiff.github.io
 
 Quartz v5 site that publishes the Obsidian vault at `~/Documents/Notes`
 (repo: `handsdiff/notes`, public) to GitHub Pages at
-`https://handsdiff.github.io/garden/`.
+`https://handsdiff.github.io/`.
+
+This repo was renamed from `handsdiff/garden` to `handsdiff/handsdiff.github.io`
+so the site is served at the bare domain root (no `/garden` subpath). As a
+result `baseUrl` is `handsdiff.github.io` (no path) and the `cname` plugin is
+disabled (not needed — this repo's name *is* the GitHub Pages domain, so no
+custom domain / CNAME record is required).
 
 ## Architecture
 
@@ -25,8 +31,8 @@ Quartz v5 site that publishes the Obsidian vault at `~/Documents/Notes`
   from the user's other (non-public) GitHub identity. Do not introduce
   that other identity, or any reference to its username, into this
   repo's history or config.
-- `origin` -> `git@github.com-handsdiff:handsdiff/garden.git` (uses the
-  `github.com-handsdiff` Host alias in `~/.ssh/config`, key
+- `origin` -> `git@github.com-handsdiff:handsdiff/handsdiff.github.io.git`
+  (uses the `github.com-handsdiff` Host alias in `~/.ssh/config`, key
   `~/.ssh/id_ed25519_handsdiff`).
 - `upstream` -> `https://github.com/jackyzha0/quartz.git` (for pulling
   Quartz updates via `npx quartz update` if desired).
