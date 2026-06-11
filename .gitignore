@@ -11,6 +11,3 @@ private/
 replit.nix
 .quartz/
 quartz/cli/tui/dist/
-
-# content is synced from handsdiff/notes by the deploy workflow; never commit it here
-content/
