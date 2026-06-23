@@ -1,6 +1,6 @@
 # handsdiff/handsdiff.github.io
 
-Quartz v5 site that publishes the Obsidian vault at `~/Documents/Notes`
+Quartz v5 site that publishes the Obsidian vault at `~/Vaults/Notes`
 (repo: `handsdiff/notes`, public) to GitHub Pages at
 `https://handsdiff.github.io/`.
 
